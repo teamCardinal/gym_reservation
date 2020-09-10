@@ -4,8 +4,8 @@ app = Flask(__name__)
 
 app.config["SECRET_KEY"] = "a4ee17a1c54ab04ae3a0950b8f86b5bf"
 
-@app.route('/')
-def hello_world():
+@app.route("/", methods=["GET"])
+def home():
     return "Hello, Team Cardinal!"
 
 @app.route("/register", methods=["GET", "POST"])
@@ -18,3 +18,4 @@ def register():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
