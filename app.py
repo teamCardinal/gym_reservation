@@ -1,3 +1,4 @@
+from account import Account
 from flask import Flask, redirect, render_template, url_for
 from forms.register import RegistrationForm
 app = Flask(__name__)
@@ -15,6 +16,10 @@ def register():
         return redirect(url_for("home"))
     return render_template("register.html", form=form)
 
+@app.route("/account", methods=["GET"])
+def account():
+    account = Account()
+    return render_template("account.html", account=account)
 
 if __name__ == "__main__":
     app.run(debug=True)
