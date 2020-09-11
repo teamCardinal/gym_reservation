@@ -17,6 +17,9 @@ def create_tables():
     from gym_reservation.models.user import User
     db.create_all()
 
-from gym_reservation import routes 
+from gym_reservation import routes
 from gym_reservation.models.user import User
+from gym_reservation.models.user_session import UserSession
+from gym_reservation.models.gym import Gym
+from gym_reservation.models.gym_session import GymSession
 

@@ -10,6 +10,7 @@ class Gym(db.Model):
     address = db.Column(db.String(120), nullable=False)
     phone = db.Column(db.String(12), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
+    sessions = db.relationship("GymSession")
 
     def __repr__(self):
         return f"Gym('{self.name}', '{self.parent_gym}', '{self.address}', '{self.phone}', '{self.email}')"

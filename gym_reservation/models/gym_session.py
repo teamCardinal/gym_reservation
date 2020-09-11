@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 
 from gym_reservation import db
 
@@ -7,7 +7,7 @@ class GymSession(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     time_start = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     time_end = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    gym_id = db.Column(db.Integer, nullable=False)
+    gym_id = db.Column(db.Integer, db.ForeignKey("gym.id"), nullable=False)
     capacity = db.Column(db.Integer, nullable=False)
     spots_remaining = db.Column(db.Integer, nullable=False)
     activity = db.Column(db.String, nullable=False)
