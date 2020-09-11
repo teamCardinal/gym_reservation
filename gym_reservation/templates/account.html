@@ -4,5 +4,11 @@
 	<title>Account</title>
 </head>
 <body>
+	<div>
+		<h1>{{ current_user.username }}</h1>
+		<h2>Email Address: {{ current_user.email }}</h2>
+		<h2>Gym: {{ current_user.gym }}</h2>
+		<h2>Membership ID: {{ current_user.membership_id }}</h2>
+	</div>
 </body>
 {% endblock content %}
