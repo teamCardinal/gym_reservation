@@ -14,7 +14,7 @@ def home():
         user = User.query.filter_by(username=form.username.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user)
-            return redirect(url_for("account"))
+            return redirect(url_for("account", username=current_user.username))
         else:
             flash("Login Unsuccessful. Please check username and password")
 
@@ -37,8 +37,11 @@ def register():
         return redirect(url_for("home"))
     return render_template("register.html", form=form)
 
-@app.route("/account", methods=["GET"])
+@app.route("/account/<username>", methods=["GET"])
 @login_required
-def account():
-    return render_template("account.html")
+def account(username):
+    if username == current_user.username:
+        return render_template("account.html")
+    else:
+        return redirect(url_for("home"))
 
