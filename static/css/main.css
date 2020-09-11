@@ -1,0 +1,16 @@
+html{
+    background: url(https://images.pexels.com/photos/791763/pexels-photo-791763.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    color: white;
+    background-color: black;
+    box-shadow: 0 0 5px 10px black;
+}
+
