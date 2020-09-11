@@ -1,4 +1,5 @@
-from flask import render_template, request, redirect, url_for
+from flask import flash, render_template, request, redirect, url_for
+from flask_login import login_user
 
 from gym_reservation import app, bcrypt, db 
 from gym_reservation.forms.register import RegistrationForm
@@ -8,10 +9,16 @@ from gym_reservation.models.user import User
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    if request.method == 'POST':
-        pass
-    else:
-        return render_template('home.html')
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            login_user(user)
+            return redirect(url_for("account"))
+        else:
+            flash("Login Unsuccessful. Please check username and password")
+
+    return render_template('home.html', form=form)
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
