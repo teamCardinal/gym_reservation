@@ -14,6 +14,7 @@ class User(db.Model, UserMixin):
     gym = db.Column(db.String(20), nullable=False)
     membership_id = db.Column(db.String(20), unique=True, nullable=False)
     password = db.Column(db.String(60), nullable=False)
+    sessions = db.relationship("UserSession")
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.gym}', '{self.membership_id}')"
