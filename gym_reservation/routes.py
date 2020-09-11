@@ -1,9 +1,8 @@
-from account import Account
-from flask import Flask, render_template, request, redirect, url_for
-from forms.register import RegistrationForm
+from flask import render_template, request, redirect, url_for
 
-app = Flask(__name__)
-app.config["SECRET_KEY"] = "a4ee17a1c54ab04ae3a0950b8f86b5bf"
+from gym_reservation import app
+from gym_reservation.forms.register import RegistrationForm
+from gym_reservation.models.account import Account
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -13,7 +12,6 @@ def home():
     else:
         return render_template('home.html')
 
-
 @app.route("/register", methods=["GET", "POST"])
 def register():
     form = RegistrationForm()
@@ -21,12 +19,8 @@ def register():
         return redirect(url_for("home"))
     return render_template("register.html", form=form)
 
-
 @app.route("/account", methods=["GET"])
 def account():
     account = Account()
     return render_template("account.html", account=account)
 
-
-if __name__ == "__main__":
-    app.run(debug=True)
