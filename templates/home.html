@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='flex.ico') }}">
+</head>
+<body>
+        <h1>Welcome to the gym reservation system.</h1>
+
+        <h2>Please log in to view available gym sessions in your area!</h2>
+        <form action="/" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="password">
+            <label for="username">Password:</label>
+            <input type="text" id="password" name="username">
+            <input type="submit" value="Log In">
+        </form>
+        <p>Don't have an account?<p>
+        <form action="/register">
+            <input type="submit" value="Make an Account">
+        </form>
+</body>
+</html>
