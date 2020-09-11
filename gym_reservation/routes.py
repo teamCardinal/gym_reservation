@@ -3,7 +3,7 @@ from flask_login import login_user
 
 from gym_reservation import app, bcrypt, db 
 from gym_reservation.forms.register import RegistrationForm
-from gym_reservation.models.account import Account
+from gym_reservation.forms.login import LoginForm 
 from gym_reservation.models.user import User
 
 
@@ -39,6 +39,5 @@ def register():
 
 @app.route("/account", methods=["GET"])
 def account():
-    account = Account()
-    return render_template("account.html", account=account)
+    return render_template("account.html")
 
