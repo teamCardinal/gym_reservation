@@ -1,5 +1,5 @@
 from flask import flash, render_template, request, redirect, url_for
-from flask_login import login_user
+from flask_login import current_user, login_required, login_user
 
 from gym_reservation import app, bcrypt, db 
 from gym_reservation.forms.register import RegistrationForm
@@ -38,6 +38,7 @@ def register():
     return render_template("register.html", form=form)
 
 @app.route("/account", methods=["GET"])
+@login_required
 def account():
     return render_template("account.html")
 
