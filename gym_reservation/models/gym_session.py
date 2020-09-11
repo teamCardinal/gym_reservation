@@ -14,4 +14,4 @@ class GymSession(db.Model):
 
 
     def __repr__(self):
-        return f"GymSession('{self.time_start}', '{self.time_end}', '{self.gym_id}', '{self.capacity}', '{self.sports_remaining}', '{activity}')"
+        return f"GymSession('{self.time_start}', '{self.time_end}', '{self.gym_id}', '{self.capacity}', '{self.spots_remaining}', '{self.activity}')"
