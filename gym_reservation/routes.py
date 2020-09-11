@@ -1,9 +1,9 @@
 from flask import flash, render_template, request, redirect, url_for
-from flask_login import current_user, login_required, login_user
+from flask_login import current_user, login_required, login_user, logout_user
 
-from gym_reservation import app, bcrypt, db 
+from gym_reservation import app, bcrypt, db
 from gym_reservation.forms.register import RegistrationForm
-from gym_reservation.forms.login import LoginForm 
+from gym_reservation.forms.login import LoginForm
 from gym_reservation.models.user import User
 
 
@@ -45,3 +45,8 @@ def account(username):
     else:
         return redirect(url_for("home"))
 
+
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for("home"))

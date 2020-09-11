@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+    {% if current_user.is_authenticated %}
+        <a href="{{ url_for("logout") }}">Logout</a>
+    {% endif %}
 	<body>
 		{% block content %}{% endblock %}
 	</body>
