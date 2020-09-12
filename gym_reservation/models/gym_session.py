@@ -15,3 +15,11 @@ class GymSession(db.Model):
 
     def __repr__(self):
         return f"GymSession('{self.time_start}', '{self.time_end}', '{self.gym_id}', '{self.capacity}', '{self.spots_remaining}', '{self.activity}')"
+
+    def __init__(self, time_start, time_end, gym_id, capacity, spots_remaining, activity ):
+        self.time_start = time_start
+        self.time_end = time_end
+        self.gym_id = gym_id
+        self.capacity = capacity
+        self.spots_remaining = spots_remaining
+        self.activity = activity

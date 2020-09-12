@@ -10,3 +10,7 @@ class UserSession(db.Model):
 
     def __repr__(self):
         return f"UserSession('{self.user_id}', '{self.session_id}')"
+
+    def __init__(self, user_id, session_id):
+        self.user_id = user_id
+        self.session_id = session_id
