@@ -19,7 +19,7 @@ def home():
         else:
             flash("Login Unsuccessful. Please check username and password")
 
-    return render_template('home.html', form=form)
+    return render_template('home.html', title="Home - Login", form=form)
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -36,21 +36,21 @@ def register():
         db.session.commit()
         flash('Your account has been created! You are now able to log in')
         return redirect(url_for("home"))
-    return render_template("register.html", form=form)
+    return render_template("register.html", title="Register", form=form)
 
 
 @app.route("/sessions", methods=["GET", "POST"])
-def display_list():
+def sessions():
     gym = Gym()
     gym_session = GymSession()
-    return render_template("sessions.html", gym=gym, gym_session=gym_session)
+    return render_template("sessions.html", title="Sessions", gym=gym, gym_session=gym_session)
 
 
 @app.route("/account/<username>", methods=["GET"])
 @login_required
 def account(username):
     if username == current_user.username:
-        return render_template("account.html")
+        return render_template("account.html", title="Account")
     else:
         return redirect(url_for("home"))
 
@@ -65,7 +65,7 @@ def user_sessions(username):
             gym_session = GymSession.query.filter_by(id=user_session.id).first()
             gym_sessions.append(gym_session)
 
-        return render_template("user_sessions.html", sessions=gym_sessions)
+        return render_template("user_sessions.html", title="MySessions", sessions=gym_sessions)
     else:
         return redirect(url_for("home"))
 
