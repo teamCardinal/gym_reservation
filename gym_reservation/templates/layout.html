@@ -1,9 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet", href="{{ url_for('static', filename='css/layout.css') }}">
+    {% block styles %}
+    {% endblock styles %}
+    <link rel="shortcut icon" href="{{ url_for('static', filename='flex.ico') }}">
+    <title>{{ title }}</title>
+</head>
+<body>
     {% if current_user.is_authenticated %}
-        <a href="{{ url_for("logout") }}">Logout</a>
+        <header class="site-header">
+            <nav class="navbar navbar-expand-md fixed-top">
+                <div class="container">
+                    <a class="nav-item nav-link" href="{{ url_for("account", username="test") }}">Account</a>
+                    <a class="nav-item nav-link" href="{{ url_for("user_sessions", username="test") }}">MySessions</a>
+                    <a class="nav-item nav-link" href="{{ url_for("sessions") }}">Sessions</a>
+                    <a class="nav-item nav-link" href="{{ url_for("logout") }}">Logout</a>
+                </div>
+            </nav>
+        </header>
     {% endif %}
-	<body>
-		{% block content %}{% endblock %}
-	</body>
-</html>
+    <main role="main" class="container">
+        {% block content %}{% endblock %}
+    </main>
+</body>
