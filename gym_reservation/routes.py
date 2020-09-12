@@ -5,7 +5,8 @@ from gym_reservation import app, bcrypt, db
 from gym_reservation.forms.register import RegistrationForm
 from gym_reservation.forms.login import LoginForm
 from gym_reservation.models.user import User
-
+from gym_reservation.models.gym import Gym
+from gym_reservation.models.gym_session import GymSession
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -36,6 +37,14 @@ def register():
         flash('Your account has been created! You are now able to log in')
         return redirect(url_for("home"))
     return render_template("register.html", form=form)
+
+
+@app.route("/sessions", methods=["GET", "POST"])
+def display_list():
+    gym = Gym()
+    gym_session = GymSession()
+    return render_template("sessions.html", gym=gym, gym_session=gym_session)
+
 
 @app.route("/account/<username>", methods=["GET"])
 @login_required

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sessions</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/sessions.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='flex.ico') }}">
+</head>
+<body>
+
+    <p class="text-center">Please select your desired time slot and click the REGISTER button to reserve your spot!</p>
+
+    <table style="width:85%" class="table table-hover table-borderless">
+        <thead class="thead-dark">
+            <tr>
+                <th>Gym Location</th>
+                <th>Available Times</th>
+                <th>Register</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for i in range(1,10) %}
+                <tr>
+                    <td> gym info </td>
+                    <td>
+                        <select class="custom-select custom-select-sm">
+                          <option selected>Select a time</option>
+                          <option value="1">One</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                        </select>
+                    </td>
+                    <td>
+                        <form method="POST">
+                            <button class="btn btn-warning" type="submit">REGISTER</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+</body>
+</html>
