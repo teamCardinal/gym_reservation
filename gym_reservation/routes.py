@@ -6,6 +6,7 @@ from gym_reservation.forms.register import RegistrationForm
 from gym_reservation.forms.login import LoginForm
 from gym_reservation.models.user import User
 from gym_reservation.models.gym_session import GymSession
+from gym_reservation.models.user_session import UserSession
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -50,13 +51,14 @@ def account(username):
 @login_required
 def user_sessions(username):
     if username == current_user.username:
-        user_sessions = User.query.filter_by(id=current_user.id).first().sessions
-        sessions = []
-        for user_session in user_sessions:
-            session = GymSession.query.filter_by(id=user_session.id).first()
-            sessions.append(session)
+        user_sessions = current_user.sessions
 
-        return render_template("user_sessions.html", sessions=sessions)
+        gym_sessions = []
+        for user_session in user_sessions:
+            gym_session = GymSession.query.filter_by(id=user_session.id).first()
+            gym_sessions.append(gym_session)
+
+        return render_template("user_sessions.html", sessions=gym_sessions)
     else:
         return redirect(url_for("home"))
 
