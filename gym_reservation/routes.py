@@ -54,6 +54,20 @@ def account(username):
     else:
         return redirect(url_for("home"))
 
+@app.route("/account/<username>/sessions", methods=["GET"])
+@login_required
+def user_sessions(username):
+    if username == current_user.username:
+        user_sessions = current_user.sessions
+
+        gym_sessions = []
+        for user_session in user_sessions:
+            gym_session = GymSession.query.filter_by(id=user_session.id).first()
+            gym_sessions.append(gym_session)
+
+        return render_template("user_sessions.html", sessions=gym_sessions)
+    else:
+        return redirect(url_for("home"))
 
 @app.route("/logout")
 def logout():

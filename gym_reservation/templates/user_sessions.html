@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+<head>
+	<title>My Sessions</title>
+</head>
+<body>
+    {% for session in sessions %}
+        <div>
+            <h2>From: {{ session.time_start }}</h2>
+            <h2>To: {{ session.time_end }}</h2>
+            <h2>Activity: {{ session.activity }}</h2>
+        <div>
+    {% endfor %}
+</body>
+{% endblock content %}
