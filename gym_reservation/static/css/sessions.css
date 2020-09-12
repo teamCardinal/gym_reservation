@@ -1,0 +1,43 @@
+html, body{
+    background: url(https://images.pexels.com/photos/669577/pexels-photo-669577.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+input{
+  position: fixed;
+  left: 889px;
+  bottom: 1px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    color: black;
+    overflow: auto;
+}
+
+table{
+    text-align: center;
+    background-color: white;
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+}
+th, td{
+    border-bottom: 1px solid #ddd;
+}
+
+p{
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    border-radius: 10px;
+    font-size: large;
+}
