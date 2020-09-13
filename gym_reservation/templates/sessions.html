@@ -20,7 +20,11 @@
                 <tr>
                     <td>{{ session.time_start.strftime("%b/%d/%Y") }}</td>
                     <td>{{ session.time_start.strftime("%H:%M") }} - {{ session.time_end.strftime("%H:%M") }}</td>
-                    <td>{{ session.gym_name }}</td>
+                    {% for gym in gyms %}
+                    {% if session.gym_id == gym.id %}
+                        <td>{{ gym.name }}</td>
+                    {% endif %}
+                    {% endfor %}
                     <td>{{ session.activity }}</td>
                     <td>{{ session.spots_remaining}} / {{ session.capacity }}</td>
                     <td>
