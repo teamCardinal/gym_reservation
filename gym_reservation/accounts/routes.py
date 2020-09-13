@@ -34,6 +34,11 @@ def cancel_session(username, id):
     .filter_by(session_id=id)\
     .delete()
 
+    gym_session = GymSession.query.filter_by(id=id).first()
+
+    if gym_session.spots_remaining < gym_session.capacity:
+        gym_session.spots_remaining += 1
+
     db.session.commit()
 
     return redirect(url_for("account.user_sessions", username=current_user.username))
