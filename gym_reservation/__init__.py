@@ -16,7 +16,16 @@ login_manager.login_view = "home"
 def create_tables():
     from gym_reservation.models.user import User
     db.create_all()
+    # Wipe the DB and uncomment to get your fake data :)
+    #populate_dummy_database()
 
+def populate_dummy_database():
+    dummy_data.DummyDataGym.populate_gym_data()
+    dummy_data.DummyDataGymSession.populate_gym_session_data()
+    dummy_data.DummyDataUser.populate_user_data()
+    dummy_data.DummyDataUserSession.populate_user_session_data()
+
+from gym_reservation import dummy_data
 from gym_reservation import routes
 from gym_reservation.models.user import User
 from gym_reservation.models.user_session import UserSession

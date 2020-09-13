@@ -12,7 +12,6 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     gym = db.Column(db.String(20), nullable=False)
-    membership_id = db.Column(db.String(20), unique=True, nullable=False)
     password = db.Column(db.String(60), nullable=False)
     sessions = db.relationship("UserSession")
 
@@ -28,3 +27,8 @@ class User(db.Model, UserMixin):
     def hash_password(self, password):
         self.password = bcrypt.generate_password_hash(password).decode('utf-8')
 
+    def __init__(self, username, email, gym, password):
+        self.username = username
+        self.email = email
+        self.gym = gym
+        self.password = password
