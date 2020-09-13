@@ -1,1 +1,1 @@
-web: python run.py
+web: sudo env "PATH=$PATH" python run.py

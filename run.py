@@ -3,7 +3,7 @@ from gym_reservation import create_app, dummy_data
 app = create_app()
 
 if __name__ == "__main__":
-    app.run(debug=True, port=80)
+    app.run(debug=True, port=443)
 
     @app.before_first_request
     def create_tables():
