@@ -1,21 +1,25 @@
 from flask import flash, render_template, redirect, url_for
 from flask_login import current_user, login_required, login_user, logout_user
 
-from gym_reservation import app, bcrypt, db
+from gym_reservation import app, db
 from gym_reservation.forms.register import RegistrationForm
 from gym_reservation.forms.login import LoginForm
+from gym_reservation.helpers.route_helpers import RouteHelpers
 from gym_reservation.models.user import User
 from gym_reservation.models.gym import Gym
 from gym_reservation.models.gym_session import GymSession
 from gym_reservation.models.user_session import UserSession
 
+route_helpers = RouteHelpers()
+
 @app.route("/home", methods=["GET", "POST"])
 @app.route('/', methods=['GET', 'POST'])
 def home():
     form = LoginForm()
+
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
-        if user and bcrypt.check_password_hash(user.password, form.password.data):
+        if route_helpers.login_password_is_valid(user, form):
             login_user(user)
             return redirect(url_for("account", username=current_user.username))
         else:
@@ -26,18 +30,14 @@ def home():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     form = RegistrationForm()
+
     if form.validate_on_submit():
-        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user = User(
-                username=form.username.data,
-                email=form.email.data,
-                gym=form.gym.data,
-                membership_id=form.membership_id.data,
-                password=hashed_password)
+        user = route_helpers.create_user_from_registration_form(form)
         db.session.add(user)
         db.session.commit()
         flash('Your account has been created! You are now able to log in')
         return redirect(url_for("home"))
+
     return render_template("register.html", title="Register", form=form)
 
 @app.route("/sessions", methods=["GET", "POST"])
@@ -66,12 +66,7 @@ def account(username):
 def user_sessions(username):
     if username == current_user.username:
         user_sessions = current_user.sessions
-
-        gym_sessions = []
-        for user_session in user_sessions:
-            gym_session = GymSession.query.filter_by(id=user_session.id).first()
-            gym_sessions.append(gym_session)
-
+        gym_sessions = route_helpers.convert_user_sessions_to_gym_sessions(user_sessions)
         return render_template("user_sessions.html", title="MySessions", sessions=gym_sessions)
     else:
         return redirect(url_for("home"))

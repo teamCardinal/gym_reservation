@@ -1,6 +1,6 @@
 from flask_login import UserMixin
 
-from gym_reservation import db, login_manager
+from gym_reservation import bcrypt, db, login_manager
 
 
 @login_manager.user_loader
@@ -24,4 +24,7 @@ class User(db.Model, UserMixin):
 
     def remove_session(self, session):
         self.sessions.remove(session)
+
+    def hash_password(self, password):
+        self.password = bcrypt.generate_password_hash(password).decode('utf-8')
 
