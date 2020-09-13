@@ -1,15 +1,32 @@
 {% extends "layout.html" %}
+{% block styles %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/sessions.css')}}">
+{% endblock styles %}
 {% block content %}
-<head>
-    <title>{{ title }}</title>
-</head>
 <body>
-    {% for session in sessions %}
-        <div>
-            <h2>From: {{ session.time_start }}</h2>
-            <h2>To: {{ session.time_end }}</h2>
-            <h2>Activity: {{ session.activity }}</h2>
-        <div>
-    {% endfor %}
+    <table style="width:100%" class="table table-hover table-borderless">
+        <thead class="thead-dark">
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Gym</th>
+                <th>Activity</th>
+                <th>Cancel</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for session in sessions %}
+                <tr>
+                    <td>{{ session.time_start.strftime("%b/%d/%Y") }}</td>
+                    <td>{{ session.time_start.strftime("%H:%M") }} - {{ session.time_end.strftime("%H:%M") }}</td>
+                    <td>{{ session.gym_name }}</td>
+                    <td>{{ session.activity }}</td>
+                    <td>
+                        <a href="{{ url_for("cancel_session", id=session.id) }}"><button class="btn btn-warning">CANCEL</button></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 {% endblock content %}

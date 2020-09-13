@@ -48,10 +48,18 @@ def gym_sessions():
 
 @app.route("/register_session/<id>")
 def register_session(id):
-    session = UserSession.query.filter_by(id=id).first()
+    session = GymSession.query.filter_by(id=id).first()
+    print(session)
     db.session.add(session)
     db.session.commit()
     return redirect(url_for("gym_sessions"))
+
+@app.route("/cancel_session/<id>")
+def cancel_session(id):
+    db.session.query(UserSession).filter(session_id=id).delete()
+    session.commit()
+
+    return redirect(url_for("user_sessions"))
 
 @app.route("/account/<username>", methods=["GET"])
 @login_required
@@ -66,6 +74,7 @@ def account(username):
 def user_sessions(username):
     if username == current_user.username:
         user_sessions = current_user.sessions
+        print(user_sessions)
         gym_sessions = route_helpers.convert_user_sessions_to_gym_sessions(user_sessions)
         return render_template("user_sessions.html", title="MySessions", sessions=gym_sessions)
     else:
