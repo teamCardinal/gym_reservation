@@ -27,6 +27,8 @@ def gym_sessions():
     .filter(~GymSession.id.in_(registered_session_ids))\
     .filter(GymSession.time_start >= datetime.now())\
     .filter(GymSession.spots_remaining > 0)\
+    .order_by(GymSession.time_start)\
+    .order_by(GymSession.time_end)\
     .join(Gym)
 
     return render_template("sessions.html", title="Sessions", sessions=gyms_and_sessions, gyms=gyms)

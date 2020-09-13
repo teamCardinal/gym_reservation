@@ -43,10 +43,9 @@ class DummyDataGymSession:
     @staticmethod
     def generate_random_session():
         activities = ["weight room", "cardio equipment", "indoor track", "yoga studio"]
-        date_pair = (DummyDataGymSession.generate_random_date(), DummyDataGymSession.generate_random_date())
 
-        time_start = min(date_pair)
-        time_end = max(date_pair)
+        time_start = DummyDataGymSession.generate_random_date()
+        time_end = time_start + datetime.timedelta(hours=1)
         gym_id = random.randrange(1, 6)
         capacity = random.randrange(1, 100)
         spots_remaining = random.randrange(0, capacity + 1)
@@ -66,20 +65,6 @@ class DummyDataGymSession:
 
         return date
 
-    # dummy_gym_session_1 = GymSession(datetime.datetime(2020, 9, 13, 7), datetime.datetime(2020, 9, 13, 8),
-    #                                  1, 15, 6, "weight room")
-    # dummy_gym_session_2 = GymSession(datetime.datetime(2020, 9, 13, 12), datetime.datetime(2020, 9, 13, 13),
-    #                                  2, 20, 16, "cardio equipment")
-    # dummy_gym_session_3 = GymSession(datetime.datetime(2020, 9, 13, 18, 30), datetime.datetime(2020, 9, 13, 19, 30),
-    #                                  3, 10, 4, "indoor track")
-    # dummy_gym_session_4 = GymSession(datetime.datetime(2020, 9, 13, 8, 30), datetime.datetime(2020, 9, 13, 9, 30),
-    #                                  4, 6, 3, "yoga studio")
-    # dummy_gym_session_5 = GymSession(datetime.datetime(2020, 9, 13, 16, 30), datetime.datetime(2020, 9, 13, 17, 30),
-    #                                  5, 10, 5, "weight room")
-
-    # dummy_gym_sessions = [dummy_gym_session_1, dummy_gym_session_2, dummy_gym_session_3, dummy_gym_session_4,
-    #                       dummy_gym_session_5]
-
     @staticmethod
     def populate_gym_session_data():
         for i in range(10, 100):
@@ -88,10 +73,6 @@ class DummyDataGymSession:
             print(session)
         
         db.session.commit()
-
-        # for a_gym_session in DummyDataGymSession.dummy_gym_sessions:
-        #     db.session.add(a_gym_session)
-        #     db.session.commit()
 
 
 class DummyDataUser:

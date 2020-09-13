@@ -28,4 +28,6 @@ def convert_user_sessions_to_gym_sessions(user_sessions):
 
         gym_sessions.append(gym_session)
 
+    gym_sessions = sorted(gym_sessions, key=lambda k: k["time_start"])
+
     return gym_sessions
