@@ -48,8 +48,11 @@ def gym_sessions():
 
 @app.route("/register_session/<id>")
 def register_session(id):
-    session = GymSession.query.filter_by(id=id).first()
-    print(session)
+    session = UserSession.query.filter_by(session_id=id).first()
+    if not session:
+        session = UserSession(user_id=current_user.id, session_id=id)
+    else:
+        session.user_id = current_user.id
     db.session.add(session)
     db.session.commit()
     return redirect(url_for("gym_sessions"))
