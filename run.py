@@ -1,3 +1,5 @@
+import os
+
 from gym_reservation import create_app, db, dummy_data
 
 app = create_app()
