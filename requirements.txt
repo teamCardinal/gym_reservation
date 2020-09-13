@@ -1,1 +1,28 @@
+bcrypt @ file:///C:/ci/bcrypt_1597936263757/work
+certifi==2020.6.20
+cffi @ file:///C:/ci/cffi_1598352710791/work
+click==7.1.2
+dnspython==2.0.0
+dominate==2.5.2
+email-validator @ file:///tmp/build/80754af9/email-validator_1597787390459/work
+Faker==4.1.2
+Flask==1.1.2
+Flask-Bcrypt @ file:///tmp/build/80754af9/flask-bcrypt_1592513356562/work
+Flask-Bootstrap==3.3.7.1
+Flask-Login==0.5.0
+Flask-SQLAlchemy @ file:///tmp/build/80754af9/flask-sqlalchemy_1596836624296/work
+Flask-WTF==0.14.3
 gunicorn==20.0.4
+idna @ file:///tmp/build/80754af9/idna_1593446292537/work
+itsdangerous==1.1.0
+Jinja2==2.11.2
+MarkupSafe==1.1.1
+pycparser @ file:///tmp/build/80754af9/pycparser_1594388511720/work
+python-dateutil==2.8.1
+six==1.15.0
+SQLAlchemy @ file:///C:/ci/sqlalchemy_1598374833867/work
+text-unidecode==1.3
+visitor==0.1.3
+Werkzeug==1.0.1
+wincertstore==0.2
+WTForms @ file:///tmp/build/80754af9/wtforms_1597707484216/work
