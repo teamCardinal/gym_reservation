@@ -1,4 +1,7 @@
 {% extends "layout.html" %}
+{% block styles %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+{% endblock styles %}
 {% block content %}
 	<head>
         <title>{{ title }}</title>
@@ -8,7 +11,7 @@
 			<form method="POST" action="">
 				{{ form.hidden_tag() }}
 				<fieldset>
-					<legend>Join Today</legend>
+					<legend>Join Today!</legend>
 					<div>
 						{{ form.username.label }}
 						{{ form.username }}
