@@ -5,17 +5,20 @@
 {% block content %}
     <h1>Welcome to the gym reservation system.</h1>
 
-    <h2>Please log in to view available gym sessions in your area!</h2>
-    <form action="/" method="post">
-    {{ form.hidden_tag() }}
-    <label for="username">{{ form.username.label }}:</label>
-    {{ form.username }}
-    <label for="password">{{ form.password.label }}:</label>
-    {{ form.password }}
-    {{ form.submit }}
-    </form>
-    <p>Don't have an account?<p>
-    <form action="/register">
-        <input type="submit" value="Make an Account">
-    </form>
+    {% if current_user.is_authenticated %}
+    {% else %}
+        <h2>Please log in to view available gym sessions in your area!</h2>
+        <form action="/" method="post">
+        {{ form.hidden_tag() }}
+        <label for="username">{{ form.username.label }}:</label>
+        {{ form.username }}
+        <label for="password">{{ form.password.label }}:</label>
+        {{ form.password }}
+        {{ form.submit }}
+        </form>
+        <p>Don't have an account?<p>
+        <form action="/register">
+            <input type="submit" value="Make an Account">
+        </form>
+    {% endif %}
 {% endblock content %}
