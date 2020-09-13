@@ -59,7 +59,7 @@ def cancel_session(id):
     db.session.query(UserSession).filter(session_id=id).delete()
     session.commit()
 
-    return redirect(url_for("user_sessions"))
+    return redirect(url_for("user_sessions", username=current_user.username))
 
 @app.route("/account/<username>", methods=["GET"])
 @login_required
