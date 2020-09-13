@@ -1,1 +1,1 @@
-web: gunicorn app:gym_reservation
+web: gunicorn gym_reservation:gym_reservation
