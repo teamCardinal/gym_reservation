@@ -1,4 +1,4 @@
-from flask import flash, render_template, request, redirect, url_for
+from flask import flash, render_template, redirect, url_for
 from flask_login import current_user, login_required, login_user, logout_user
 
 from gym_reservation import app, bcrypt, db
@@ -7,6 +7,7 @@ from gym_reservation.forms.login import LoginForm
 from gym_reservation.models.user import User
 from gym_reservation.models.gym import Gym
 from gym_reservation.models.gym_session import GymSession
+from gym_reservation.models.user_session import UserSession
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -38,13 +39,18 @@ def register():
         return redirect(url_for("home"))
     return render_template("register.html", title="Register", form=form)
 
-
 @app.route("/sessions", methods=["GET", "POST"])
-def sessions():
-    gym = Gym()
-    gym_session = GymSession()
-    return render_template("sessions.html", title="Sessions", gym=gym, gym_session=gym_session)
+def gym_sessions():
+    sessions = GymSession.query.all()
+    gyms_and_sessions = db.session.query(GymSession).join(Gym)
+    return render_template("sessions.html", title="Sessions", sessions=gyms_and_sessions)
 
+@app.route("/register_session/<id>")
+def register_session(id):
+    session = UserSession.query.filter_by(id=id).first()
+    db.session.add(session)
+    db.session.commit()
+    return redirect(url_for("gym_sessions"))
 
 @app.route("/account/<username>", methods=["GET"])
 @login_required

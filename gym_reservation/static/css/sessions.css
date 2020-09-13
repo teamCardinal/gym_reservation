@@ -6,13 +6,6 @@ html, body{
     background-size: cover;
 }
 
-input{
-  position: fixed;
-  left: 889px;
-  bottom: 1px;
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-}
 
 body {
     font-family: 'Roboto', sans-serif;
