@@ -1,1 +1,1 @@
-web: gunicorn gym_reservation:app
+web: python run.py
