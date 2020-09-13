@@ -18,9 +18,10 @@ def home():
         user = User.query.filter_by(username=form.username.data).first()
         if login_password_is_valid(user, form):
             login_user(user)
+            flash("Welcome!", "success")
             return redirect(url_for("account.account", username=current_user.username))
         else:
-            flash("Login Unsuccessful. Please check username and password")
+            flash("Login Unsuccessful. Please check username and password", "danger")
 
     return render_template('home.html', title="Home", form=form)
 
@@ -32,7 +33,7 @@ def register():
         user = create_user_from_registration_form(form)
         db.session.add(user)
         db.session.commit()
-        flash('Your account has been created! You are now able to log in')
+        flash("Success!", "success")
         return redirect(url_for("main.home"))
 
     return render_template("register.html", title="Register", form=form)

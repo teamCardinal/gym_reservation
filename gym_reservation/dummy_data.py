@@ -53,11 +53,11 @@ class DummyDataGymSession:
 
 
 class DummyDataUser:
-    dummy_user_1 = User("joeflex", "joe@fakemail.com", "SomeTimes Fitness", "ilovebears")
-    dummy_user_2 = User("nancymuscle", "nancy@fakemail.com", "SomeTimes Fitness", "ilovecats")
-    dummy_user_3 = User("steveripped", "steve@fakemail.com", "SomeTimes Fitness", "iloverhinos")
-    dummy_user_4 = User("jilljacked", "jill@fakemail.com", "SomeTimes Fitness", "iloveorcas")
-    dummy_user_5 = User("sambench600", "sam@fakemail.com", "SomeTimes Fitness", "ilovesloths")
+    dummy_user_1 = User("joeflex", "joe@fakemail.com",  "ilovebears")
+    dummy_user_2 = User("nancymuscle", "nancy@fakemail.com", "ilovecats")
+    dummy_user_3 = User("steveripped", "steve@fakemail.com", "iloverhinos")
+    dummy_user_4 = User("jilljacked", "jill@fakemail.com", "iloveorcas")
+    dummy_user_5 = User("sambench600", "sam@fakemail.com", "ilovesloths")
 
     dummy_users = [dummy_user_1, dummy_user_2, dummy_user_3, dummy_user_4, dummy_user_5]
 
