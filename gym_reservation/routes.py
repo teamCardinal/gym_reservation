@@ -9,6 +9,7 @@ from gym_reservation.models.gym import Gym
 from gym_reservation.models.gym_session import GymSession
 from gym_reservation.models.user_session import UserSession
 
+@app.route("/home", methods=["GET", "POST"])
 @app.route('/', methods=['GET', 'POST'])
 def home():
     form = LoginForm()
