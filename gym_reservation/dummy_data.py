@@ -65,6 +65,7 @@ class DummyDataUser:
     def populate_user_data():
 
         for a_user in DummyDataUser.dummy_users:
+            a_user.hash_password(a_user.password)
             db.session.add(a_user)
             db.session.commit()
 
