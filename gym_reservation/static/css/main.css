@@ -14,7 +14,13 @@ body {
     box-shadow: 0 0 5px 10px black;
 }
 
-div {
-    background: url(https://images.pexels.com/photos/791763/pexels-photo-791763.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260) no-repeat center center fixed;
+.content-section {
+    padding: 1rem 2rem;
     margin: auto;
+    width: 70%;
+    min-width: 400px;
+}
+
+.form-control-label {
+    float: left;
 }

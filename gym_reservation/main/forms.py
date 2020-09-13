@@ -20,13 +20,9 @@ class RegistrationForm(FlaskForm):
             "Email",
             validators=[DataRequired(), Email()])
 
-    gym = StringField(
-            "Gym",
-            validators=[DataRequired()])
-
     password = PasswordField(
             "Password",
-            validators=[DataRequired()])
+            validators=[DataRequired(), Length(min=8)])
 
     confirm_password = PasswordField(
             "Confirm Password",
@@ -48,10 +44,3 @@ class RegistrationForm(FlaskForm):
 
         if user:
             raise ValidationError("That email is taken. Please use a different one.")
-
-    def validate_membership_id(self, membership_id):
-
-        user = User.query.filter_by(membership_id=membership_id.data).first()
-
-        if user:
-            raise ValidationError("That membership_id is taken. Please use a different one.")

@@ -14,7 +14,6 @@ def create_user_from_registration_form(form):
     user = User(
             username=form.username.data,
             email=form.email.data,
-            gym=form.gym.data,
             password=form.password.data)
 
     password = user.hash_password(form.password.data)
