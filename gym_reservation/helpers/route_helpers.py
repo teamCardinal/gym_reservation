@@ -26,7 +26,7 @@ class RouteHelpers():
     def convert_user_sessions_to_gym_sessions(self, user_sessions):
         gym_sessions = []
         for user_session in user_sessions:
-            gym_session = GymSession.query.filter_by(id=user_session.id).first()
+            gym_session = GymSession.query.filter_by(id=user_session.session_id).first()
             gym_sessions.append(gym_session)
 
         return gym_sessions
