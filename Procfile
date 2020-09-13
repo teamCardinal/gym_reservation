@@ -1,1 +1,1 @@
-web: sudo env "PATH=$PATH" python run.py
+web: gunicorn gym_reservation:app
