@@ -8,15 +8,15 @@ from gym_reservation import db
 
 class DummyDataGym:
 
-    dummy_gym_1 = Gym("SomeTimes Fitness", "100 Universal City Plaza, Universal City, CA 91608", "123-456-7890",
+    dummy_gym_1 = Gym("SomeTimes Fitness", "100 Universal City Plaza, Universal City, CA 91608", "123-456-7891",
                       "gym1@fakemail.com")
-    dummy_gym_2 = Gym("SomeTimes Fitness", "1600 Pennsylvania Avenue NW, Washington, DC 20500", "123-456-7890",
+    dummy_gym_2 = Gym("0 Hour Fitness", "1600 Pennsylvania Avenue NW, Washington, DC 20500", "123-456-7892",
                       "gym2@fakemail.com")
-    dummy_gym_3 = Gym("SomeTimes Fitness", "11 W 53rd St, New York, NY 10019", "123-456-7890",
+    dummy_gym_3 = Gym("Asteroid Fitness", "11 W 53rd St, New York, NY 10019", "123-456-7893",
                       "gym3@fakemail.com")
-    dummy_gym_4 = Gym("SomeTimes Fitness", "719 Wisconsin St, Cawker City, KS 67430", "123-456-7890",
+    dummy_gym_4 = Gym("Mold's Gym", "719 Wisconsin St, Cawker City, KS 67430", "123-456-7894",
                       "gym4@fakemail.com")
-    dummy_gym_5 = Gym("SomeTimes Fitness", "702 SW 8th St, Bentonville, AR 72712", "123-456-7890",
+    dummy_gym_5 = Gym("NYC Fitness", "702 SW 8th St, Bentonville, AR 72712", "123-456-7895",
                       "gym5@fakemail.com")
 
     dummy_gyms = [dummy_gym_1, dummy_gym_2, dummy_gym_3, dummy_gym_4, dummy_gym_5]
@@ -26,7 +26,7 @@ class DummyDataGym:
 
         for a_gym in DummyDataGym.dummy_gyms:
             db.session.add(a_gym)
-            db.session.commit(a_gym)
+            db.session.commit()
 
 
 class DummyDataGymSession:
@@ -49,7 +49,7 @@ class DummyDataGymSession:
 
         for a_gym_session in DummyDataGymSession.dummy_gym_sessions:
             db.session.add(a_gym_session)
-            db.session.commit(a_gym_session)
+            db.session.commit()
 
 
 class DummyDataUser:
@@ -66,7 +66,7 @@ class DummyDataUser:
 
         for a_user in DummyDataUser.dummy_users:
             db.session.add(a_user)
-            db.session.commit(a_user)
+            db.session.commit()
 
 
 class DummyDataUserSession:
@@ -84,4 +84,4 @@ class DummyDataUserSession:
 
         for a_user_session in DummyDataUserSession.dummy_user_sessions:
             db.session.add(a_user_session)
-            db.session.commit(a_user_session)
+            db.session.commit()

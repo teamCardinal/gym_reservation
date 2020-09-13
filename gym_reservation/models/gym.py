@@ -10,7 +10,7 @@ class Gym(db.Model):
     sessions = db.relationship("GymSession")
 
     def __repr__(self):
-        return f"Gym('{self.name}', '{self.parent_gym}', '{self.address}', '{self.phone}', '{self.email}')"
+        return f"Gym('{self.name}', '{self.address}', '{self.phone}', '{self.email}')"
 
     def __init__(self, name, address, phone, email):
         self.name = name

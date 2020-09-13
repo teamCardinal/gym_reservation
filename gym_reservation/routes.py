@@ -41,9 +41,9 @@ def register():
 
 @app.route("/sessions", methods=["GET", "POST"])
 def gym_sessions():
-    sessions = GymSession.query.all()
+    gyms = Gym.query.all()
     gyms_and_sessions = db.session.query(GymSession).join(Gym)
-    return render_template("sessions.html", title="Sessions", sessions=gyms_and_sessions)
+    return render_template("sessions.html", title="Sessions", sessions=gyms_and_sessions, gyms=gyms)
 
 @app.route("/register_session/<id>")
 def register_session(id):
