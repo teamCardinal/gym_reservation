@@ -22,7 +22,7 @@
                     <td>{{ session.gym_name }}</td>
                     <td>{{ session.activity }}</td>
                     <td>
-                        <a href="{{ url_for("cancel_session", id=session.id) }}"><button class="btn btn-warning">CANCEL</button></a>
+                        <a href="{{ url_for("account.cancel_session", id=session.id, username=current_user.username) }}"><button class="btn btn-warning">CANCEL</button></a>
                     </td>
                 </tr>
             {% endfor %}

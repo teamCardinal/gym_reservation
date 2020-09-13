@@ -15,19 +15,19 @@
         <header class="site-header">
             <nav class="navbar navbar-expand-md fixed-top">
                 <div class="container">
-                    <a class="nav-item nav-link" href="{{ url_for("home") }}">Home</a>
+                    <a class="nav-item nav-link" href="{{ url_for("main.home") }}">Home</a>
                     <a 
                         class="nav-item nav-link" 
-                        href="{{ url_for("account", username=current_user.username) }}">
+                        href="{{ url_for("account.account", username=current_user.username) }}">
                         Account
                     </a>
                     <a 
                         class="nav-item nav-link" 
-                        href="{{ url_for("user_sessions", username=current_user.username) }}">
+                        href="{{ url_for("account.user_sessions", username=current_user.username) }}">
                         MySessions
                     </a>
-                    <a class="nav-item nav-link" href="{{ url_for("gym_sessions") }}">Sessions</a>
-                    <a class="nav-item nav-link" href="{{ url_for("logout") }}">Logout</a>
+                    <a class="nav-item nav-link" href="{{ url_for("sessions.gym_sessions") }}">Sessions</a>
+                    <a class="nav-item nav-link" href="{{ url_for("account.logout", username=current_user.username) }}">Logout</a>
                 </div>
             </nav>
         </header>

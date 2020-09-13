@@ -28,7 +28,7 @@
                     <td>{{ session.activity }}</td>
                     <td>{{ session.spots_remaining}} / {{ session.capacity }}</td>
                     <td>
-                        <a href="{{ url_for("register_session", id=session.id) }}"><button class="btn btn-warning">REGISTER</button></a>
+                        <a href="{{ url_for("sessions.register_session", id=session.id) }}"><button class="btn btn-warning">REGISTER</button></a>
                     </td>
                 </tr>
             {% endfor %}

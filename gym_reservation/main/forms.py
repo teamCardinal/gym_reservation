@@ -1,8 +1,14 @@
 from flask_wtf import FlaskForm
-from wtforms import PasswordField, StringField, SubmitField 
+from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError
 
 from gym_reservation.models.user import User
+
+
+class LoginForm(FlaskForm):
+    username = StringField("Username", validators=[DataRequired()])
+    password = PasswordField("Password", validators=[DataRequired()])
+    submit = SubmitField("Login")
 
 
 class RegistrationForm(FlaskForm):
@@ -16,10 +22,6 @@ class RegistrationForm(FlaskForm):
 
     gym = StringField(
             "Gym",
-            validators=[DataRequired()])
-
-    membership_id = StringField(
-            "Membership ID",
             validators=[DataRequired()])
 
     password = PasswordField(
