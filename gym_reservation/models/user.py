@@ -11,24 +11,16 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    gym = db.Column(db.String(20), nullable=False)
     password = db.Column(db.String(60), nullable=False)
     sessions = db.relationship("UserSession")
 
     def __repr__(self):
-        return f"User('{self.username}', '{self.email}', '{self.gym}', '{self.membership_id}')"
-
-    def add_session(self, session):
-        self.sessions.append(session)
-
-    def remove_session(self, session):
-        self.sessions.remove(session)
+        return f"User('{self.username}', '{self.email}')"
 
     def hash_password(self, password):
         self.password = bcrypt.generate_password_hash(password).decode('utf-8')
 
-    def __init__(self, username, email, gym, password):
+    def __init__(self, username, email, password):
         self.username = username
         self.email = email
-        self.gym = gym
         self.password = password
