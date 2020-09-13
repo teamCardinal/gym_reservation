@@ -13,7 +13,7 @@ accounts = Blueprint("account", __name__)
 @login_required
 def account(username):
     if username == current_user.username:
-        return render_template("account.html", title="Account")
+        return render_template("user_sessions.html", title="Account")
     else:
         return redirect(url_for("main.home"))
 

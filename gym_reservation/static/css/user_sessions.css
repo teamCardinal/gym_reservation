@@ -7,10 +7,15 @@ html, body{
 }
 
 
+h2, h4 {
+    text-align: left;
+    margin-top: 20px;
+    background-color: darkgray;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
-    text-align: center;
-    color: black;
+    color: white;
     overflow: auto;
 }
 
@@ -24,14 +29,4 @@ table{
 }
 th, td{
     border-bottom: 1px solid #ddd;
-}
-
-p{
-    width: 85%;
-    margin-top: 15px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: white;
-    border-radius: 10px;
-    font-size: large;
 }

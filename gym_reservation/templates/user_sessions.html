@@ -1,6 +1,18 @@
 {% extends "layout.html" %}
+    {% block styles %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/user_sessions.css') }}">
+    {% endblock styles %}
 {% block content %}
 <body>
+    <div>
+		<h4>Username: {{ current_user.username }}</h4>
+		<h4>Email: {{ current_user.email }}</h4>
+	</div>
+    <h2>My Upcoming Sessions</h2>
+
     <table style="width:100%" class="table table-hover table-borderless">
         <thead class="thead-dark">
             <tr>
