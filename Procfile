@@ -1,1 +1,1 @@
-web: pip install -r requirements.txt && python run.py
+web: gunicorn gym_reservation:app
