@@ -81,7 +81,6 @@ def account(username):
 def user_sessions(username):
     if username == current_user.username:
         user_sessions = current_user.sessions
-        print(user_sessions)
         gym_sessions = route_helpers.convert_user_sessions_to_gym_sessions(user_sessions)
         return render_template("user_sessions.html", title="MySessions", sessions=gym_sessions)
     else:
