@@ -21,9 +21,12 @@ class DummyDataGym:
 
     dummy_gyms = [dummy_gym_1, dummy_gym_2, dummy_gym_3, dummy_gym_4, dummy_gym_5]
 
-    for a_gym in dummy_gyms:
-        db.session.add(a_gym)
-        db.session.commit(a_gym)
+    @staticmethod
+    def populate_gym_data():
+
+        for a_gym in DummyDataGym.dummy_gyms:
+            db.session.add(a_gym)
+            db.session.commit(a_gym)
 
 
 class DummyDataGymSession:
@@ -41,9 +44,12 @@ class DummyDataGymSession:
     dummy_gym_sessions = [dummy_gym_session_1, dummy_gym_session_2, dummy_gym_session_3, dummy_gym_session_4,
                           dummy_gym_session_5]
 
-    for a_gym_session in dummy_gym_sessions:
-        db.session.add(a_gym_session)
-        db.session.commit(a_gym_session)
+    @staticmethod
+    def populate_gym_session_data():
+
+        for a_gym_session in DummyDataGymSession.dummy_gym_sessions:
+            db.session.add(a_gym_session)
+            db.session.commit(a_gym_session)
 
 
 class DummyDataUser:
@@ -55,9 +61,12 @@ class DummyDataUser:
 
     dummy_users = [dummy_user_1, dummy_user_2, dummy_user_3, dummy_user_4, dummy_user_5]
 
-    for a_user in dummy_users:
-        db.session.add(a_user)
-        db.session.commit(a_user)
+    @staticmethod
+    def populate_user_data():
+
+        for a_user in DummyDataUser.dummy_users:
+            db.session.add(a_user)
+            db.session.commit(a_user)
 
 
 class DummyDataUserSession:
@@ -70,6 +79,9 @@ class DummyDataUserSession:
     dummy_user_sessions = [dummy_user_session_1, dummy_user_session_2, dummy_user_session_3, dummy_user_session_4,
                            dummy_user_session_5]
 
-    for a_user_session in dummy_user_sessions:
-        db.session.add(a_user_session)
-        db.session.commit(a_user_session)
+    @staticmethod
+    def populate_user_session_data():
+
+        for a_user_session in DummyDataUserSession.dummy_user_sessions:
+            db.session.add(a_user_session)
+            db.session.commit(a_user_session)
