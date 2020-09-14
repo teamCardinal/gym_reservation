@@ -9,8 +9,9 @@ html, body{
 
 h2, h4 {
     text-align: left;
-    margin-top: 20px;
-    background-color: darkgray;
+    margin-top: 16px;
+    padding: 4px;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 body {
